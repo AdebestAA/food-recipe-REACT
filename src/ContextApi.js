@@ -73,11 +73,15 @@ const onLoadSearch = async(recipe)=>{
                 return;
             }
             const response  = await res.json()
+            console.log("response");
+            console.log(response);
           
            
             if (response.data.recipes.length > 0) {
                 setLoading(false)
                 setData(response.data.recipes)
+                console.log("data");
+                console.log(response.data.recipes);
                 
             }
         } catch (error) {
