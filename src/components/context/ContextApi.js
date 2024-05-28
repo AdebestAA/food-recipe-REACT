@@ -30,11 +30,11 @@ const AppProvider =  ({children})=>{
       setMyFavaourites(copyFavorite)
     }
 
-    const handleSearch =async ()=> {
-        // e.preventDefault()
-        // if (!search) {
-        //     return
-        // }
+    const handleSearch =async (e)=> {
+        e.preventDefault()
+        if (!search) {
+            return
+        }
 
         try {
             setLoading(true)
@@ -62,6 +62,7 @@ const AppProvider =  ({children})=>{
         push("/")
 
     }
+
 const onLoadSearch = async(recipe)=>{
  try {
             setLoading(true)
@@ -86,16 +87,21 @@ const onLoadSearch = async(recipe)=>{
 
 }
 
-useEffect(()=>{
-  if (!search) {
-    onLoadSearch("beans")
-    return
-  }
- handleSearch()
-},[search])
+// useEffect(()=>{
+//   if (!search) {
+//     onLoadSearch("pizza")
+//     return ()=>  onLoadSearch("pizza")
+//   }
+//   handleSearch()
+  
+//   return ()=> handleSearch()
+
+// },[search])
 
 useEffect(()=>{
-onLoadSearch("beans")
+onLoadSearch("pizza")
+
+return ()=> onLoadSearch("pizza")
 },[])
 
 

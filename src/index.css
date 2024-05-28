@@ -7,9 +7,19 @@
 .shadow{
     /* @apply shadow-md shadow-textColor; */
     @apply outline-none;
-    box-shadow: 0px 0px 5px 1px #1a1a1a;
+    box-shadow: 0px 0px 7px -2px #1a1a1a;
 }
 
 ::placeholder{
     text-align: center;
+}
+
+.style-section{
+    @apply flex gap-2
+}
+.style-section span{
+    @apply font-normal w-[50%] text-start
+}
+.style-section h1{
+    @apply w-[40%] text-start
 }

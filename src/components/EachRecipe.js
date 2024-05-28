@@ -12,15 +12,15 @@ const EachRecipe = ({item}) => {
      <img src={item.image_url} alt={item.title} className='w-[80%] h-[60%] rounded-md object-cover' />
      <div className='w-[85%] text-center'>
       {/* small screen title */}
-<h1 className='md:font-bold font-medium md:hidden block'>{item.title.length > 15 ? item.title.slice(0,10) + "..." : item.title}</h1>
+<h1 className='md:font-bold font-medium md:hidden block md:text-[1rem] text-[0.8rem]'>{item.title.length > 15 ? item.title.slice(0,10) + "..." : item.title}</h1>
       {/* large  screen title*/}
 <h1 className='md:font-bold font-medium md:block hidden'>{item.title.length > 15 ? item.title.slice(0,15) + "..." : item.title}</h1>
 {/* small screen publisher */}
-<h5 className='md:font-semibold font-normal block md:hidden'>{item.publisher.length > 10 ? item.publisher.slice(0,9)+"..." : item.publisher}</h5>
+<h5 className='md:font-semibold font-normal block md:hidden text-[0.8rem]'>{item.publisher.length > 10 ? item.publisher.slice(0,9)+"..." : item.publisher}</h5>
 {/* large screen publisher */}
 <h5 className='md:font-semibold font-normal md:block hidden'>{item.publisher.length > 15 ? item.publisher.slice(0,14)+"..." : item.publisher}</h5>
      </div>
-<button className='bg-textColor text-white md:py-2 md:px-4 py-[3px] px-[8px] mt-2 rounded-lg md:font-semibold ' onClick={navigate}>Detail</button>
+<button className='bg-textColor text-white md:py-2 md:px-4 py-[3px] px-[8px] mt-2 rounded-lg md:font-semibold text-[0.8rem] hover:opacity-70 focus:opacity-70' onClick={navigate}>Detail</button>
     </section>
   )
 }

@@ -9,7 +9,7 @@ const Search = () => {
     <input type="text"
     placeholder='search recipe'
     name='search'
-    className='shadow rounded-xl px-2 py-1 text-black font-semibold md:w-64 w-[50%] mx-auto md:h-[2.5rem] h-[1.7rem]'
+    className='shadow rounded-xl px-2 py-1 text-black md:w-64 w-[50%] mx-auto md:h-[2.5rem] h-[1.7rem]'
     value={search}
     onChange={(e)=> setSearch(e.target.value)} />
  </form>

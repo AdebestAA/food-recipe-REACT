@@ -15,12 +15,12 @@ const Navbar = () => {
     <nav className='font-semibold  flex items-center justify-between py-4 md:px-8 px-2  text-slate-600'>
       <NavLink to={"/"}>
         {/* <h1 className={"text-[12px]sm:text-lg"}>Food Recipe</h1> */}
-        <img src='/food-logo.png' alt='food logo' className='md:w-[5rem] w-[4rem]'/>
+        <img src='/food-logo.png' alt='food logo' className='md:w-[7rem] w-[6rem]'/>
       </NavLink>
    
 <div className='flex space-x-3 ml-[4px] md:w-[8%] justify-between '>
-    <NavLink to={"/"} className={`${pathname === "/" ? "text-cardColor md:text-2xl text-[23px]":"md:text-2xl text-[23px] "}`}>< MdHome/></NavLink>
-    <NavLink to={"/favorites"}className={`${pathname === "/favorites" ? "text-cardColor md:text-2xl text-[23px]":"md:text-2xl text-[23px] "}`}>< MdOutlineFavorite/></NavLink>
+    <NavLink to={"/"} className={`${pathname === "/" ? "text-cardColor md:text-2xl text-[28px]":"md:text-2xl text-[28px] "}`}>< MdHome/></NavLink>
+    <NavLink to={"/favorites"}className={`${pathname === "/favorites" ? "text-cardColor md:text-2xl text-[28px]":"md:text-2xl text-[28px] "}`}>< MdOutlineFavorite/></NavLink>
 </div>
     </nav>
   )
