@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { AppContext } from '../../components/context/ContextApi'
+import { AppContext } from '../../ContextApi'
 import EachRecipe from '../../components/EachRecipe'
 import Loader from '../../components/Loader'
 

@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { AppContext } from '../../components/context/ContextApi'
+
 import Loader from '../../components/Loader'
+import { AppContext } from '../../ContextApi'
 
 const Details = () => {
 const {id } = useParams()
@@ -75,16 +76,16 @@ myFavorites.findIndex(item => item.id === foundData.id) === -1 ? "add to favorit
     </article>
 
 <table className='mt-4'>
-  <tr className='border-[1px] border-gray-800 '>
+  <thead className='border-[1px] border-gray-800 '>
   <th className='text-center w-[60%]'>Ingredient</th>
   <th className='text-center w-[40%] border-l-[0.5px] border-black'>Quantity</th>
-  </tr>
+  </thead>
  {foundData?.ingredients?.map((item,index) => {
    return (
-    <tr key={index} className='border-[1px] border-gray-800 text-start'>
+    <tbody key={index} className='border-[1px] border-gray-800 text-start'>
     <td className='pl-[2px]'>{item.description}</td>
     <td className='border-l-[1px] border-black pl-2'>{item.quantity}</td>
-    </tr>
+    </tbody>
     //  <section key={item.description}>
     //     {/* quantity */}
     //     <section  className='style-section'>

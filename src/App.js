@@ -3,14 +3,14 @@ import Home from "./pages/home/Home";
 import Navbar from "./components/Navbar";
 import Favorites from "./pages/favorites/Favorites";
 import Details from "./pages/details/Details";
-import AppProvider from "./components/context/ContextApi";
 import Search from "./components/Search";
+import AppProvider from "./ContextApi";
 
 function App() {
   // const url = "https:/forkify-api.herokuapp.com/api/v2/recipes?search=banana"
   // const find = "https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc9ca"
   return (
-    <div  className="bg-bgColor">
+    <div  className="bg-red-500">
 <BrowserRouter>
 <AppProvider>
   <Navbar/>

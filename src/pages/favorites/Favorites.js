@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
-import { AppContext } from '../../components/context/ContextApi'
+
 import EachRecipe from '../../components/EachRecipe'
+import { AppContext } from '../../ContextApi'
 
 const Favorites = () => {
     const {myFavorites} = useContext(AppContext)

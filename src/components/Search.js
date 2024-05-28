@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { AppContext } from './context/ContextApi'
+import { AppContext } from '../ContextApi'
 
 
 const Search = () => {
