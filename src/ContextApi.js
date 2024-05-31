@@ -66,24 +66,28 @@ const AppProvider =  ({children})=>{
 const onLoadSearch = async(recipe)=>{
  try {
             setLoading(true)
-            const res = await fetch(`https:/forkify-api.herokuapp.com/api/v2/recipes?search=${recipe}`)
            
+            const res = await fetch(`https://forkify-api.herokuapp.com/api/search?q=${recipe}`)
+            // const res = await fetch(`https:/forkify-api.herokuapp.com/api/v2/recipes?search=${recipe}`)
+          
             if (!res.ok) {
                 console.log("something went wrong");
                 return;
             }
             const response  = await res.json()
-            console.log("response");
-            console.log(response);
-          
-           
-            if (response.data.recipes.length > 0) {
+            // console.log(response.recipes);
+            
+               if (response.recipes.length > 0) {
                 setLoading(false)
-                setData(response.data.recipes)
-                console.log("data");
-                console.log(response.data.recipes);
+                setData(response.recipes)
+        
                 
             }
+           
+            // if (response.data.recipes.length > 0) {
+            //     setLoading(false)
+            //     setData(response.data.recipes)
+            // }
         } catch (error) {
             console.log(error);
             setLoading(false)
@@ -101,6 +105,31 @@ const onLoadSearch = async(recipe)=>{
 //   return ()=> handleSearch()
 
 // },[search])
+
+useEffect(()=>{
+const url = 'https://webknox-recipes.p.rapidapi.com/recipes/quickAnswer?q=How%20much%20vitamin%20c%20is%20in%202%20apples%3F';
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': 'acaa964e06msheb33891d8fb14efp128fd2jsn280fae11bda3',
+		'X-RapidAPI-Host': 'webknox-recipes.p.rapidapi.com'
+	}
+};
+
+async function fetch() {
+  try {
+	const response = await fetch(url, options);
+	const result = await response.json();
+	console.log(result);
+} catch (error) {
+	console.error(error);
+}
+}
+
+// fetch()
+
+// return ()=> fetch()
+},[])
 
 useEffect(()=>{
 onLoadSearch("pizza")

@@ -6,6 +6,7 @@ import Loader from '../../components/Loader'
 const Home = () => {
 
   const {search,setSearch,handleSearch,loading,data} = useContext(AppContext)
+
 // console.log(data);
   if (loading) {
     // return <main className='flex flex-wrap items-center justify-center gap-4 my-4' ><h1 className='font-bold'>Loading</h1></main>
