@@ -13,16 +13,18 @@ const [findLaoding,setFindLoading] = useState(false)
   const findData = async()=> {
 try {
   setFindLoading(true)
-  const res = await fetch(`https://forkify-api.herokuapp.com/api/v2/recipes/${id}`)
+  const res = await fetch(`https://forkify-api.herokuapp.com/api/get?rId=${id}`)
+
+  // const res = await fetch(`https://forkify-api.herokuapp.com/api/v2/recipes/${id}`)
   if (!res.ok) {
     console.log("there was an error")
   }
 const response = await res.json()
 
-console.log(response.data.recipe.ingredients);
-if (response.data.recipe) {
+// console.log(response.recipe);
+if (response.recipe) {
   setFindLoading(false)
-  setFoundData(response.data.recipe)
+  setFoundData(response.recipe)
 }
   
 } catch (error) {
@@ -41,17 +43,20 @@ if (findLaoding) {
 }
 
   return (
-    <main className='my-4 font-semibold flex justify-center flex-col items-center md:flex-row md:px-4 md:items-start md:justify-center md:space-x-8'>
-      <div className='min-h-[300px]  w-[85%]  flex md:flex-col justify-center py-4 md:py-0  '>
-        <img src={foundData?.image_url} alt="" className='w-full h-60 md:min-h-[300px] rounded-lg'  />
+    <main className='my-4 font-semibold flex justify-center flex-col gap-4 items-center md:flex-row md:px-4 md:items-start md:justify-center md:space-x-8 pt-4 px-2' >
+      <div className='md:w-[50%]  flex md:flex-col justify-center py-4 md:py-0  '>
+        <img src={foundData?.image_url} alt="" className='w-full h-60 lg:h-[300px] xxl:h-[400px] rounded-lg object-cover'  />
+        {/* button for desktop */}
   <button className='bg-slate-900 text-white self-center mt-8 py-2 px-4 mt-2 rounded-lg font-semibold md:block hidden' onClick={()=> addToFavorite(foundData)}>{
-  myFavorites.findIndex(item => item.id === foundData.id) === -1 ? "add to favorite" : "remove from favorite"
+  myFavorites.findIndex(item => item.recipe_id === foundData.recipe_id) === -1 ? "add to favorite" : "remove from favorite"
   }</button>
       </div>
+      {/* button for mobile */}
            <button className='bg-slate-900 text-white py-2 px-4 mt-2 rounded-lg font-semibold md:hidden' onClick={()=> addToFavorite(foundData)}>{
-myFavorites.findIndex(item => item.id === foundData.id) === -1 ? "add to favorite" : "remove from favorite"
+myFavorites.findIndex(item => item.recipe_id
+ === foundData.recipe_id) === -1 ? "add to favorite" : "remove from favorite"
 }</button>
-      <div className='w-[85%] mt-4 md:mt-0 text-center flex flex-col'>
+      <div className='md:w-[50%]  mt-4 md:mt-0 text-center flex flex-col'>
     {/* <h1>{foundData?.title}</h1> */}
     {/* title */}
     <article>
@@ -68,14 +73,15 @@ myFavorites.findIndex(item => item.id === foundData.id) === -1 ? "add to favorit
     </section>
 
     {/* <h1>{foundData?.cooking_time}</h1> */}
-       <section  className='style-section'>
+       {/* <section  className='style-section'>
       <h1>Cooking time:</h1>
       <span>{foundData?.cooking_time}</span>
-    </section>
+    </section> */}
+
 
     </article>
 
-<table className='mt-4'>
+{/* <table className='mt-4'>
   <thead className='border-[1px] border-gray-800 '>
   <th className='text-center w-[60%]'>Ingredient</th>
   <th className='text-center w-[40%] border-l-[0.5px] border-black'>Quantity</th>
@@ -86,23 +92,19 @@ myFavorites.findIndex(item => item.id === foundData.id) === -1 ? "add to favorit
     <td className='pl-[2px]'>{item.description}</td>
     <td className='border-l-[1px] border-black pl-2'>{item.quantity}</td>
     </tbody>
-    //  <section key={item.description}>
-    //     {/* quantity */}
-    //     <section  className='style-section'>
-    //     <h1>Quantity:</h1>
-    //     <span>{item.quantity}</span>
-    //     </section>
 
-    //     {/* <p>{item.description}</p> */}
-    //     {/* description */}
-    //        <section  className='style-section'>
-    //     <h1>Description:</h1>
-    //     <span>{item.description}</span>
-    //     </section>
-    //    </section>
       )
     })}
-    </table>
+    </table> */}
+    <article className='mt-8'>
+      <h1 className='capitalize underline'>ingredients</h1>
+      <ul className='text-start list-disc'>
+      {foundData?.ingredients?.length > 0 && foundData.ingredients.map((item,index)=>{
+        
+        return <li key={index} className='font-thin'>{item}</li>
+      })}
+      </ul>
+    </article>
       </div>
 
     </main>

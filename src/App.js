@@ -10,7 +10,7 @@ function App() {
   // const url = "https:/forkify-api.herokuapp.com/api/v2/recipes?search=banana"
   // const find = "https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc9ca"
   return (
-    <div  className="bg-red-500">
+    <div>
 <BrowserRouter>
 <AppProvider>
   <Navbar/>

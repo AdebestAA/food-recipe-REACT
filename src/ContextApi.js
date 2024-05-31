@@ -17,7 +17,7 @@ const AppProvider =  ({children})=>{
     const addToFavorite = (currentItem) => {
       const copyFavorite = [...myFavorites]
 
-      const checkFavorites = copyFavorite.findIndex(item => item.id === currentItem.id)
+      const checkFavorites = copyFavorite.findIndex(item => item.recipe_id === currentItem.recipe_id)
 
       if (checkFavorites === -1) {
         
@@ -38,7 +38,8 @@ const AppProvider =  ({children})=>{
 
         try {
             setLoading(true)
-            const res = await fetch(`https:/forkify-api.herokuapp.com/api/v2/recipes?search=${search}`)
+            const res = await fetch(`https://forkify-api.herokuapp.com/api/search?q=${search}`)
+            // const res = await fetch(`https:/forkify-api.herokuapp.com/api/v2/recipes?search=${search}`)
            
             if (!res.ok) {
                 console.log("something went wrong");
@@ -46,13 +47,13 @@ const AppProvider =  ({children})=>{
             }
             const response  = await res.json()
             console.log();
-            if (response.data.recipes.length > 0) {
+            if (response.recipes.length > 0) {
               setLoading(false)
-              setData(response.data.recipes)       
+              setData(response.recipes)       
             }
-            if (response.data.recipes.length === 0) {
+            if (response.recipes.length === 0) {
                 setLoading(false)
-                 setData(response.data.recipes)
+                 setData(response.recipes)
             }
         } catch (error) {
             console.log(error);
@@ -132,10 +133,15 @@ async function fetch() {
 },[])
 
 useEffect(()=>{
-onLoadSearch("pizza")
+  if (search) {
+    return
+  }
+  if (!search) {
+    onLoadSearch("pizza")
+  }
 
 return ()=> onLoadSearch("pizza")
-},[])
+},[search])
 
 
   return (  <AppContext.Provider value={{

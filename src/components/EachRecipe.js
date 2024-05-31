@@ -3,9 +3,10 @@ import { useNavigate } from 'react-router-dom'
 const EachRecipe = ({item}) => {
 
     const push = useNavigate()
+  
 
     const navigate = ()=> {
-        push(`/recipe-detail/${item.id}`)
+        push(`/recipe-detail/${item.recipe_id}`)
     }
   return (
     <section className='xxl:w-[22%] xxl:h-[370px] xl:w-[22%] xl:h-[300px] lg:w-[30%] lg:h-[300px] md:w-[30%] md:h-[250px] sm:w-[45%] sm:h-[300px] xsm:w-[42%] xsm:h-[230px] w-[90%]  bg-cardColor flex flex-col items-center pt-4 rounded-lg justify-evenly pb-2'>
