@@ -97,8 +97,8 @@ myFavorites.findIndex(item => item.recipe_id
     })}
     </table> */}
     <article className='mt-8'>
-      <h1 className='capitalize underline'>ingredients</h1>
-      <ul className='text-start list-disc mx-8'>
+      <h1 className='capitalize underline italic'>ingredients</h1>
+      <ul className='text-start list-disc md:mx-4 mx-[20px]'>
       {foundData?.ingredients?.length > 0 && foundData.ingredients.map((item,index)=>{
         
         return <li key={index} className='font-thin'>{item}</li>
